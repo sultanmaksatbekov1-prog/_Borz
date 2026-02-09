@@ -1,0 +1,12 @@
+.block {
+  width: 150px;
+  height: 150px;
+  background-color: rgb(28, 197, 183);
+  cursor: pointer;
+  border: 4px solid red;
+  border-radius: 8px;
+}
+
+.green {
+  background-color: green;
+}
