@@ -46,3 +46,5 @@ const autoSlider = () => {
 autoSlider()
 const interval = setInterval(autoSlider,1000)
 
+
+

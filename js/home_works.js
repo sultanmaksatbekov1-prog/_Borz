@@ -86,3 +86,39 @@ resetBtn.onclick = () => {
     seconds.innerText = 0;
 };
 
+// CARDS
+
+const charactersContainer = document.querySelector('.characters-list')
+
+const xhr = new XMLHttpRequest()
+
+xhr.open('GET', '../data/characters.json')
+xhr.send()
+
+xhr.onload = () => {
+    const characters = JSON.parse(xhr.response)
+
+    characters.forEach(character => {
+        const card = document.createElement('div')
+        card.className = 'character-card'
+
+        card.innerHTML = 
+            `<img src="${character.image}" alt="${character.name}">
+            <h3>${character.name}</h3>
+            <p><b>Birth:</b> ${character.birth}</p>
+            <p>${character.bio}</p>
+        `
+
+        charactersContainer.append(card)
+    })
+}
+
+const xhr2 = new XMLHttpRequest()
+
+xhr2.open('GET', '../data/any.json')
+xhr2.send()
+
+xhr2.onload = () => {
+    const data = JSON.parse(xhr2.response)
+    console.log(data)
+}
