@@ -75,3 +75,8 @@ prev.onclick = () => {
 }
 
 autoSlider(index)
+
+// Fetch
+
+
+
