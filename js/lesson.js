@@ -93,33 +93,32 @@ converter(eurInput, somInput, usdInput)
 const btn = document.querySelector(".card")
 const btnNext = document.querySelector("#btn-next")
 const btnPrev = document.querySelector("#btn-prev")
-let cardId = 0
-const card = document.querySelector(".card")
 
-const functionSwitcher = () => {
+const card = document.querySelector('.card')
+const btnContainer = document.querySelector('.inner_card_switcher')
 
-  fetch(`https://jsonplaceholder.typicode.com/todos/${cardId}`)
-    .then (response => response.json())
-    .then (data => {
-      console.log(data
-        
-      );
-      
-      const {title, id, completed} = data
-      const completedTitle = completed ? 'yes' : 'no'
-      const completedColor = completed ? 'green' : 'red'
-      card.innerHTML = `
-        <p>${title}</p>
-        <p style="color: ${completedColor}">
-          ${completedTitle}
-        </p>
-        <span>${id}</span>
-      `
-    })
+let cardId = 1
+const firstCard = async () => {
+    try {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${cardId}`)
+        const data = await response.json()
+        card.innerHTML = `
+            <p>${data.title}</p>   
+            <p style="color: ${data.completed ? 'green' : 'red'}">${data.completed}</p>   
+            <span>${data.id}</span>   
+            `
+    } catch (error) {
+        console.error(error)
+    }
 }
-
-// btnContaine.onclick = (event) => {
-//   if (event.target.tagName === "button") {
-//     if ("button".id === "btnNext")
-//   }
-// }
+firstCard(cardId)
+btnContainer.onclick = (event) => {
+    if (event.target.tagName.toLowerCase() === 'button') {
+        if (event.target.id === 'btn-next') {
+            cardId < 200 ? cardId++ : cardId = 1
+        } else if (event.target.id === 'btn-prev') {
+            cardId > 1 ? cardId-- : cardId = 200
+        }
+        firstCard(cardId)
+    }
+}
