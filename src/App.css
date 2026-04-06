@@ -1,0 +1,16 @@
+.layout {
+  background: #f0f2f5;
+}
+
+.ant-card {
+  transition: all 0.3s ease;
+}
+
+.ant-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ant-radio-group {
+  width: 100%;
+}
